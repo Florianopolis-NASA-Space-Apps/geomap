@@ -17,6 +17,6 @@ The USGS is interested in building a new set of tools that will allow them visua
 * Added layer controls 
 * Fault popups included to provide additional information about the fault when a fault-line is clicked.
 
-The results can be seen at:  https://adrianaovalle.github.io/leaflet-challenge/
+The results can be seen at:  https://zernach.github.io/geomapping-earthquakes/
 
 ![animated-scatter](Images/results.gif)
