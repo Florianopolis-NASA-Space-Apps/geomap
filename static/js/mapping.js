@@ -109,15 +109,15 @@ legend.addTo(myMap);
 // Define function for Market Color
 function markerColor(sig) {
     if (sig <= 250) {
-        return "white";
+        return "#ffffff";
     } else if (sig <= 500) {
-        return "LightPink";
+        return "#72fa41";
     } else if (sig <= 750) {
-        return "LightCoral";
+        return "#24ccff";
     } else if (sig <= 1000) {
-        return "IndianRed";
+        return "#fbff00";
     } else {
-        return "Crimson";
+        return "#ff69b4";
     }
   };
 
