@@ -20,3 +20,5 @@ The USGS is interested in building a new set of tools that will allow them visua
 The results can be seen at:  https://zernach.github.io/geomapping-earthquakes/
 
 ![animated-scatter](Images/results.gif)
+
+![USGS logo](https://github.com/Zernach/geomapping-earthquakes/blob/master/Images/1-Logo.png?raw=true)

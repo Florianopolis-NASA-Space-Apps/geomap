@@ -1,18 +1,15 @@
 // store geoJSON
 const link = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson';
-const faults='static/data/qfaults_latest_quaternary.geojson';
+const faults='https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
 
 //Earhtquake Data and Fault Data
 d3.json(faults).then(function(response){
     const faults = L.geoJSON(response,{  
         style: function(feature){
             return{
-                color: 'red',
-                weight: strokeWeight(feature.properties.slip_rate)
+                color: '#c1c1c1',
+                weight: 2
             }
-        },      
-        onEachFeature: function(feature,layer){
-        layer.bindPopup("<h3>Fault Name: " + feature.properties.fault_name + "</h3> <hr> Slip Rate: "+ feature.properties.slip_rate, {maxWidth: 400});
         }
     })
 
