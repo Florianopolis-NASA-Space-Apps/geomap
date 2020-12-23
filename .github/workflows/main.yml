@@ -35,6 +35,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Allows usage of API key
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
+      # - name: Allows usage of API key
+      #   env:
+      #     API_KEY: ${{ secrets.API_KEY }}
