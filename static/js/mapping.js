@@ -1,5 +1,5 @@
 const brazil =
-  'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/brazil.geojson?raw=true';
+  'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/brazil_with_farmer.geojson?raw=true';
 
 //Earhtquake Data and Fault Data
 // d3.json(faults).then(function (response) {
@@ -26,10 +26,11 @@ d3.json(brazil).then((data) => {
   });
   function addCircleMarker(fire, latlng) {
     // console.log('fire', fire);
+    const isFarmer = fire.properties.isFarmer === 'True';
     let options = {
-      radius: fire.properties.frp / 200,
+      radius: isFarmer ? 10 : fire.properties.frp / 200,
       stroke: false,
-      fillColor: markerColor(fire.properties.frp),
+      fillColor: isFarmer ? '#24ccff' : markerColor(fire.properties.frp),
       fillOpacity: 0.75,
     };
     return L.circleMarker(latlng, options);
