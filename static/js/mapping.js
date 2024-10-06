@@ -1,22 +1,14 @@
 const brazil =
-  'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/brazil_with_farmer.geojson?raw=true';
+  'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/brazil.geojson?raw=true';
+const farmer =
+  'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/farmer.geojson?raw=true';
 
-//Earhtquake Data and Fault Data
-// d3.json(faults).then(function (response) {
-//   const faults = L.geoJSON(response, {
-//     style: function (fire) {
-//       return {
-//         color: '#c1c1c1',
-//         weight: 2,
-//       };
-//     },
-//   });
-
-d3.json(brazil).then((data) => {
-  var wildfires = L.geoJSON(data, {
+d3.json(farmer).then(function (response) {
+  // FARMER
+  var farmer = L.geoJSON(response, {
     onEachFeature: function (fire, layer) {
       layer.bindPopup(
-        '<h1>🔥 Wildfire</h1>' + '<p>' + JSON.stringify(fire, null, 2) + '</p>',
+        '<h1>🚜 Farmer</h1>' + '<p>' + JSON.stringify(fire, null, 2) + '</p>',
         {
           maxWidth: 400,
         },
@@ -25,28 +17,46 @@ d3.json(brazil).then((data) => {
     pointToLayer: addCircleMarker,
   });
   function addCircleMarker(fire, latlng) {
-    // console.log('fire', fire);
-    const isFarmer = fire.properties.isFarmer === 'True';
     let options = {
-      radius: isFarmer ? 10 : fire.properties.frp / 200,
+      radius: 12.5,
       stroke: false,
-      fillColor: isFarmer ? '#24ccff' : markerColor(fire.properties.frp),
+      fillColor: '#72fa41',
       fillOpacity: 0.75,
     };
     return L.circleMarker(latlng, options);
   }
-  createMap(
-    wildfires,
-    // faults
-  );
+
+  // BRZILIAN FARMERS
+  d3.json(brazil).then((data) => {
+    var wildfires = L.geoJSON(data, {
+      onEachFeature: function (fire, layer) {
+        layer.bindPopup(
+          '<h1>🔥 Wildfire</h1>' +
+            '<p>' +
+            JSON.stringify(fire, null, 2) +
+            '</p>',
+          {
+            maxWidth: 400,
+          },
+        );
+      },
+      pointToLayer: addCircleMarker,
+    });
+    function addCircleMarker(fire, latlng) {
+      let options = {
+        radius: fire.properties.frp / 200,
+        stroke: false,
+        fillColor: markerColor(fire.properties.frp),
+        fillOpacity: 0.75,
+      };
+      return L.circleMarker(latlng, options);
+    }
+    createMap(wildfires, farmer);
+  });
 });
-// });
 
 //Create Map Function
-function createMap(
-  wildfires,
-  // faults
-) {
+function createMap(wildfires, farmer) {
   const dark = L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     {
@@ -94,7 +104,7 @@ function createMap(
 
   const overlayMaps = {
     Wildfires: wildfires,
-    // Faults: faults,
+    Farmer: farmer,
   };
 
   let myMap = L.map('map', {
@@ -104,11 +114,7 @@ function createMap(
       -14, -51,
     ],
     zoom: 4,
-    layers: [
-      dark,
-      wildfires,
-      //   faults
-    ],
+    layers: [dark, wildfires, farmer],
   });
 
   L.control
