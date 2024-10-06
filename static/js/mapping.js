@@ -1,8 +1,8 @@
 // store geoJSON
-const link =
-  'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson';
-const faults =
-  'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
+// const link =
+//   'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson';
+// const faults =
+//   'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
 const brazil = '../../data/brazil.geojson';
 
 //Earhtquake Data and Fault Data
@@ -29,7 +29,7 @@ d3.json(brazil).then((data) => {
     pointToLayer: addCircleMarker,
   });
   function addCircleMarker(fire, latlng) {
-    console.log('fire', fire);
+    // console.log('fire', fire);
     let options = {
       radius: fire.properties.frp / 200,
       stroke: false,
@@ -38,12 +38,18 @@ d3.json(brazil).then((data) => {
     };
     return L.circleMarker(latlng, options);
   }
-  createMap(earthQuakes, faults);
+  createMap(
+    earthQuakes,
+    // faults
+  );
 });
 // });
 
 //Create Map Function
-function createMap(earthQuakes, faults) {
+function createMap(
+  earthQuakes,
+  // faults
+) {
   const dark = L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     {
@@ -91,13 +97,17 @@ function createMap(earthQuakes, faults) {
 
   const overlayMaps = {
     Earthquakes: earthQuakes,
-    Faults: faults,
+    // Faults: faults,
   };
 
   let myMap = L.map('map', {
     center: [0, 0],
     zoom: 3,
-    layers: [dark, earthQuakes, faults],
+    layers: [
+      dark,
+      earthQuakes,
+      //   faults
+    ],
   });
 
   L.control
