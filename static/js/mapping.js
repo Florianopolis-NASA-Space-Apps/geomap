@@ -1,8 +1,3 @@
-// store geoJSON
-// const link =
-//   'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson';
-// const faults =
-//   'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
 const brazil =
   'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/brazil.geojson?raw=true';
 
@@ -102,8 +97,12 @@ function createMap(
   };
 
   let myMap = L.map('map', {
-    center: [0, 0],
-    zoom: 3,
+    center: [
+      // Coordinates for the center of Brazil
+      // 14-degrees South, 51-degrees West
+      -14, -51,
+    ],
+    zoom: 5,
     layers: [
       dark,
       earthQuakes,
