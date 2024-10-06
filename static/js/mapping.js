@@ -121,8 +121,8 @@ function createMap(
   var legend = L.control({ position: 'bottomright' });
   legend.onAdd = function () {
     var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML += '<h5>EQ Significance</h5>';
-    significance = [0, 250, 500, 750, 1000];
+    div.innerHTML += '<h5>Radiation</h5>';
+    significance = [0, 300, 400];
     for (var i = 0; i < significance.length; i++) {
       div.innerHTML +=
         '<i style="background:' +
