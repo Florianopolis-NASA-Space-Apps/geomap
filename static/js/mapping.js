@@ -102,7 +102,7 @@ function createMap(
       // 14-degrees South, 51-degrees West
       -14, -51,
     ],
-    zoom: 5,
+    zoom: 4,
     layers: [
       dark,
       earthQuakes,
