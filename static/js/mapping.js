@@ -13,7 +13,7 @@ const brazil =
 //   });
 
 d3.json(brazil).then((data) => {
-  var earthQuakes = L.geoJSON(data, {
+  var wildfires = L.geoJSON(data, {
     onEachFeature: function (fire, layer) {
       layer.bindPopup(
         '<h1>🔥 Wildfire</h1>' + '<p>' + JSON.stringify(fire, null, 2) + '</p>',
@@ -36,7 +36,7 @@ d3.json(brazil).then((data) => {
     return L.circleMarker(latlng, options);
   }
   createMap(
-    earthQuakes,
+    wildfires,
     // faults
   );
 });
@@ -44,7 +44,7 @@ d3.json(brazil).then((data) => {
 
 //Create Map Function
 function createMap(
-  earthQuakes,
+  wildfires,
   // faults
 ) {
   const dark = L.tileLayer(
@@ -93,7 +93,7 @@ function createMap(
   };
 
   const overlayMaps = {
-    Earthquakes: earthQuakes,
+    Wildfires: wildfires,
     // Faults: faults,
   };
 
@@ -106,7 +106,7 @@ function createMap(
     zoom: 4,
     layers: [
       dark,
-      earthQuakes,
+      wildfires,
       //   faults
     ],
   });
