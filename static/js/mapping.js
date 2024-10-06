@@ -3,7 +3,8 @@
 //   'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson';
 // const faults =
 //   'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
-const brazil = '../../data/brazil.geojson';
+const brazil =
+  'https://raw.githubusercontent.com/Florianopolis-NASA-Space-Apps/geomap/refs/heads/master/data/brazil.geojson?raw=true';
 
 //Earhtquake Data and Fault Data
 // d3.json(faults).then(function (response) {
